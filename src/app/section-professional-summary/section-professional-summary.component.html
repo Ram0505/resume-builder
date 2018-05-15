@@ -1,0 +1,35 @@
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="professional-summary">
+  <div class="my-auto">
+    <h2 class="mb-5">Professional Summary</h2>
+
+    <form #summeryForm="ngForm">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form-group">
+            <input type="text" class="form-control" name="summaryDetails" [(ngModel)]="summaryDetails" placeholder="Eg. Good exposure to Web/Application servers Tomcat."
+              required #summaryItem="ngModel">
+
+            <div *ngIf="summaryItem.invalid && (summaryItem.dirty || summaryItem.touched)" class="alert alert-danger">
+              <div *ngIf="summaryItem.errors.required">
+                please provide your professional summary details .
+              </div>
+            </div>
+          </div>&nbsp;
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-success" [disabled]="!summeryForm.form.valid" (click)="onAddSummary(summaryItem.value);summeryForm.reset()">Add</button>
+        </div>
+      </div>
+    </form>
+
+    <br>
+    <ul class="fa-ul mb-0">
+      <li *ngFor="let item of summaryItems; let i=index;">
+        <i class="fa-li fa fa-check"></i>
+        {{summaryItems[i]}}
+        <button (click)="editSplice(i)" (click)="summaryEdit(item)">edit</button>&nbsp;
+        <button (click)="deleteItem(i)">X</button>
+      </li>
+    </ul>
+  </div>
+</section>

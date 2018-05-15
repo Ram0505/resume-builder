@@ -1,0 +1,53 @@
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+  <div class="my-auto">
+    <h2 class="mb-5">Education</h2>
+    <form #educationForm="ngForm">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form-group">
+            <input type="text" class="form-control" name="eduDetails" [(ngModel)]="eduDetails" placeholder="Eg. B.Tech from JNTU University."
+              required #eduItem="ngModel" (focus)="focusFunction() " (onkeyup.enter)="enterFunction()">
+            <div *ngIf="eduItem.invalid && (eduItem.dirty || eduItem.touched)" class="alert alert-danger">
+              <div *ngIf="eduItem.errors.required">
+                please provide your educational details .
+              </div>
+            </div>
+          </div>&nbsp;
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-success" [disabled]="!educationForm.valid" (click)="onAddEducation(eduItem.value);educationForm.reset()"
+            *ngIf="Addappear">Add</button>
+          <button type="submit" class="btn btn-success" (click)="onUpdate(eduItem.value);educationForm.reset()" *ngIf="updateAppear">Update</button>
+        </div>
+      </div>
+    </form>
+
+    <br>
+    <ul class="fa-ul mb-0">
+      <li *ngFor="let item of eduItems;let i=index;">
+        <i class="fa-li fa fa-check"></i>
+        {{ eduItems[i] }}
+        <button (click)="editEdutionDetails(item,i)" class="btn btn-primary">Edit</button>
+        <!-- <button type="submit" class="btn btn-primary" (click)="onUpdate()" *ngIf = "updateAppear">update</button> -->
+        <button (click)="deleteEdutionDetails(i)" class="btn btn-danger">Delete</button>
+        <br>
+      </li>
+      <br>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-lg outline">Preview Resume
+        <span class="fa fa-file-text-o"></span>
+      </button>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-lg outline" disabled>Generate Resume</button>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-lg outline" disabled>Print Resume
+        <span class="fa fa-print"></span>
+      </button>
+    </div>
+  </div>
+</section>

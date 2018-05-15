@@ -1,0 +1,33 @@
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+  <div class="my-auto">
+    <h2 class="mb-5">Experience</h2>
+
+    <form #experienceForm="ngForm">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form-group">
+            <input type="text" id="experience" name="experience" class="form-control" [(ngModel)]="expdetails" placeholder="Eg. Currently working as Software Engineer for Nisum Consulting Pvt. Ltd, Hyderabad"
+              required #expItem="ngModel">
+            <div *ngIf="expItem.invalid && (expItem.dirty || expItem.touched)" class="alert alert-danger">
+              <div *ngIf="expItem.errors.required">
+                please provide your experience details .
+              </div>
+            </div>
+          </div>&nbsp;
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-success" [disabled]="!experienceForm.form.valid" (click)="onAddExperience(expItem.value);experienceForm.reset()">Add</button>
+        </div>
+      </div>
+    </form>
+    <br>
+    <ul class="fa-ul mb-0">
+      <li *ngFor="let item of expItems;let i=index">
+        <i class="fa-li fa fa-check"></i>
+        {{expItems[i]}}
+        <button (click)="editExperience(item)" (click)="editSplice(i)">Edit</button>
+        <button (click)="deleteExperience(i)">X</button>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,152 @@
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="professional-experience">
+  <div class="my-auto">
+    <h2 class="mb-5">Professional Experience</h2>
+
+    <div class="resume-item d-flex flex-column flex-md-row mb-5">
+      <div class="resume-content mr-auto">
+        <h3 class="mb-0">Nisum Recruitment Portal</h3>
+        <div class="subheading mb-3">Sofware Developer</div>
+        <div class="subheading-company mb-3">Nisum Consulting Pvt Ltd.</div>
+
+        <div class="my-auto">
+          <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+
+            <mat-form-field class="example-full-width">
+              <input name="projectName" class="form-control" matInput placeholder="Project Name" [(ngModel)]="model.projectName" required
+              />
+              <button mat-button *ngIf="model.projectName" matSuffix mat-icon-button aria-label="Clear" (click)="model.projectName=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+
+
+            <mat-form-field class="example-full-width">
+              <input name="role" class="form-control" matInput placeholder="Role" [(ngModel)]="model.role" required />
+              <button mat-button *ngIf="model.role" matSuffix mat-icon-button aria-label="Clear" (click)="model.role=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="example-full-width">
+              <input name="organization" class="form-control" matInput placeholder="Organization" [(ngModel)]="model.organization" required
+              />
+              <button mat-button *ngIf="model.organization" matSuffix mat-icon-button aria-label="Clear" (click)="model.organization=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="example-full-width">
+              <input name="technologies" class="form-control" matInput placeholder="Technologies" [(ngModel)]="model.technologies" required
+              />
+              <button mat-button *ngIf="model.technologies" matSuffix mat-icon-button aria-label="Clear" (click)="model.technologies=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="example-full-width">
+              <input name="tools" class="form-control" matInput placeholder="Tools" [(ngModel)]="model.tools" required />
+              <button mat-button *ngIf="model.tools" matSuffix mat-icon-button aria-label="Clear" (click)="model.tools=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="example-full-width">
+              <textarea name="description" id="description" class="form-control" [(ngModel)]="model.description" matInput placeholder="Description"
+                required></textarea>
+              <button mat-button *ngIf="model.description" matSuffix mat-icon-button aria-label="Clear" (click)="model.description=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="example-full-width">
+              <textarea name="responsibilities" id="responsibilities" class="form-control" [(ngModel)]="model.responsibilities" matInput
+                placeholder="Responsibilities" value="Eg. Involved in Bug fixing." required></textarea>
+              <button mat-button *ngIf="model.responsibilities" matSuffix mat-icon-button aria-label="Clear" (click)="model.responsibilities=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+
+            <div class="button-row">
+              <button class="btn btn-success" [disabled]="!projectForm.form.valid" (click)="onAddProfessionalExperience()">submit</button>
+            </div>
+
+          </form>
+
+        </div>
+
+        <li *ngFor="let profExperience of profExperiences;let i=index">
+        {{profExperience.projectName}} 
+        {{profExperience.role}}  
+        {{profExperience.organization}}  
+        {{profExperience.technologies}}  
+        {{profExperience.tools}}  
+        {{profExperience.description}}  
+        {{profExperience.responsibilities}}   
+        </li>  
+        <br>
+        <br>
+
+        <div [hidden]="!submitted">
+
+          <div class="row">
+            <div class="col-xs-3">Project Name :</div>
+            <div class="col-xs-9  pull-left">{{ model.projectName }}</div>
+          </div>&nbsp;
+          <div class="row">
+            <div class="col-xs-3">Role :</div>
+            <div class="col-xs-9 pull-left">{{ model.role }}</div>
+          </div>&nbsp;
+          <div class="row">
+            <div class="col-xs-3">Organization :</div>
+            <div class="col-xs-9 pull-left">{{ model.organization}}</div>
+          </div>&nbsp;
+          <div class="row">
+            <div class="col-xs-3">Technologies :</div>
+            <div class="col-xs-9  pull-left">{{ model.technologies }}</div>
+          </div>&nbsp;
+          <div class="row">
+            <div class="col-xs-3">Tools :</div>
+            <div class="col-xs-9 pull-left">{{ model.tools }}</div>
+          </div>&nbsp;
+          <div class="row">
+            <div class="col-xs-3">Description :</div>
+            <div class="col-xs-9 pull-left">{{ model.description }}</div>
+          </div>&nbsp;
+          <div class="row">
+            <div class="col-xs-3">Responsibilities :</div>
+            <div class="col-xs-9 pull-left">{{ model.responsibilities }}</div>
+          </div>&nbsp;
+
+          <div class="button-row">
+            <div class="form-inline">
+              <button mat-raised-button color="primary" (click)="onEditClick()">Edit</button>&nbsp;
+              <button mat-raised-button color="accent" (click)="onEditClick()">Add New Project</button>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div class="resume-date text-md-right">
+        <span class="text-primary">March 2013 - Present</span>
+      </div>
+    </div>
+
+  </div>
+</section>
